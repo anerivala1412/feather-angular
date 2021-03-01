@@ -11,25 +11,17 @@ import { ChatComponent } from './components/chat/chat.component';
 import { DataService } from './services/data.service';
 import { AuthService } from './services/auth.service';
 import { AuthGuard } from './guards/auth.guard';
+import { TodosComponent } from './components/todo/todo.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    ChatComponent
-  ],
+  declarations: [AppComponent, LoginComponent, ChatComponent, TodosComponent],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
-  providers: [
-    Feathers,
-    DataService,
-    AuthService,
-    AuthGuard
-  ],
-  bootstrap: [AppComponent]
+  providers: [Feathers, DataService, AuthService, AuthGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

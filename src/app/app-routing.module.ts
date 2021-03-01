@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ChatComponent } from './components/chat/chat.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LoginComponent } from './components/login/login.component';
+import { TodosComponent } from './components/todo/todo.component';
 
 /*
   Our app's routes.
@@ -15,23 +16,27 @@ const routes: Routes = [
       {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'chat'
+        redirectTo: 'chat',
       },
       {
         path: 'chat',
         component: ChatComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
       },
       {
         path: 'login',
-        component: LoginComponent
-      }
-    ]
-  }
+        component: LoginComponent,
+      },
+      {
+        path: 'todo',
+        component: TodosComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

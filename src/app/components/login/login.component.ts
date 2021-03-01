@@ -5,7 +5,7 @@ import { Feathers } from '../../services/feathers.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   messages: string[] = [];
@@ -19,25 +19,30 @@ export class LoginComponent {
     }
 
     // try to authenticate with feathers
-    this.feathers.authenticate({
-      strategy: 'local',
-      email,
-      password
-    })
+    this.feathers
+      .authenticate({
+        strategy: 'local',
+        email,
+        password,
+      })
       // navigate to base URL on success
       .then(() => {
         this.router.navigate(['/']);
       })
-      .catch(err => {
+      .catch((err) => {
         this.messages.unshift('Wrong credentials!');
       });
   }
 
+  todo() {
+    this.router.navigate(['/todo']);
+  }
+
   signup(email: string, password: string) {
-    this.feathers.service('users')
-      .create({email, password})
+    this.feathers
+      .service('users')
+      .create({ email, password })
       .then(() => this.messages.push('User created.'))
-      .catch(err => this.messages.push('Could not create user!'))
-    ;
+      .catch((err) => this.messages.push('Could not create user!'));
   }
 }
